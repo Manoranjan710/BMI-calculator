@@ -53,6 +53,9 @@ input {
  
 p {
   margin: 10px 0;
+  font-family:'Times New Roman';
+  font-size: 24px;
+  text-decoration: underline;
 }
  
 .img-container {

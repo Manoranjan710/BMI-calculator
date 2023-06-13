@@ -1,12 +1,13 @@
 import "./App.css";
 import React, {useState} from 'react';
-// import Confetti from 'react-confetti'
+import Confetti from 'react-confetti'
 
 function App() {
   const [weight, setWeight] = useState(0);
   const [height, setHeight] = useState(0);
   const [bmi, setBmi] = useState("");
   const [message, setMessage] = useState("");
+  const [isHealthy, setIsHealthy] = useState(false);
 
   let calcBmi = (e) => {
     
@@ -21,12 +22,15 @@ function App() {
 
       if (bmi<18.5){
         setMessage("You are under-weight")
+        setIsHealthy(false)
       }
       else if( bmi>=18.5 && bmi<25 ){
         setMessage("You are healthy")
+        setIsHealthy(true)
       }
       else{
         setMessage("You are over-weight")
+        setIsHealthy(false)
       }
     }
   }
@@ -53,7 +57,7 @@ function App() {
 
   return (
     <div className="app">
-    {/* { setMessage("You are healthy") && <Confetti />} */}
+     { isHealthy && <Confetti />}
 
       <div className="container">
         <h2>BMI Calculator</h2>
@@ -88,7 +92,7 @@ function App() {
 
           <div className="center">
             <h3> Your BMI is: {bmi}</h3>
-            <p> {message} </p>
+            <p style={{backgroundColor: isHealthy? "#5aeb1c" : "#f23c24"}} > {message} </p>
           </div>
 
           <div className="image-conatiner center">
